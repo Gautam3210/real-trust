@@ -1,0 +1,40 @@
+.subscriber-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.subscriber-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.subscriber-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.subscriber-table th,
+.subscriber-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.subscriber-table th {
+  background-color: #f2f2f2;
+}
+
+.subscriber-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.no-data {
+  text-align: center;
+  padding: 15px;
+  color: #888;
+}

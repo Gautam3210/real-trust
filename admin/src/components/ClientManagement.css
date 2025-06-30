@@ -1,0 +1,54 @@
+.client-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.client-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.client-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.client-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.client-input,
+.client-textarea {
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.client-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.client-image-preview {
+  margin-top: 10px;
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.client-button {
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
