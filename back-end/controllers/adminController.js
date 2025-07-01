@@ -8,7 +8,7 @@ const subscriberModel = require("../models/subscriberModel");
 const postProjectData = async (req, res) => {
   try {
     const { projectName, projectDescription } = req.body;
-    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
 
     const newProject = new projectModel({
       projectName,
@@ -45,7 +45,7 @@ const postClientData = async (req, res) => {
       clientName,
       clientDescription,
       clientDesignation,
-      imageUrl: `http://localhost:5000/uploads/${req.file.filename}`,
+      imageUrl: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
     });
 
     const saved = await newClient.save();
