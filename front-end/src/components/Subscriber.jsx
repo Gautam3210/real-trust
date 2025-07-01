@@ -16,7 +16,7 @@ const Subscriber =  () => {
     }
   
     try {
-      await axios.post(backendUrl+"/api/subscribe", { email });
+      await axios.post(backendUrl+"/api/post-subscribe", { email });
       alert(`Subscribed with ${email}`);
       setEmail("");
     } catch (err) {
@@ -34,8 +34,9 @@ const Subscriber =  () => {
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
       </div>
-      
+  
       <form onSubmit={handleSubscribe} className="subscriber-right">
+      <span className="subscribe-label">Subscribe Us</span>
         <input
           type="email"
           placeholder="Enter your email"

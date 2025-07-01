@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import Banner from "./components/Banner";
 import Client from "./components/Client";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Subscriber from "./components/Subscriber";
@@ -20,6 +21,7 @@ function App() {
       <Projects/>
       <Client/>
       <Subscriber/>
+      <Footer/>
       </div>
      
     </>

@@ -1,3 +1,43 @@
+.banner-container {
+  position: relative;
+  color: white;
+}
+
+.banner-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: top
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+.banner-text {
+  flex: 1;
+}
+
+.consultation-form {
+  width: 350px;
+  background: rgb(0 27 81 / 67%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
 .white-input {
   background: rgb(0 27 81 / 0);
   color: white;
@@ -5,5 +45,27 @@
 
 .white-input::placeholder {
   color: white;
-  opacity: 1; /* Ensure it's not semi-transparent */
+  opacity: 1;
+}
+
+.consultation-form button {
+  background: rgb(244, 109, 33);
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .banner-overlay {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .consultation-form {
+    width: 100%;
+    margin-top: 2rem;
+  }
 }

@@ -1,0 +1,71 @@
+
+.custom-navbar {
+  background-color: white;
+  padding: 0;
+}
+
+.navbar-container {
+  height: 5rem;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.custom-link {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: white;
+}
+
+.admin-link {
+  border: 2px solid #f46d21;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: black;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.admin-link:hover {
+  background-color: #f7ab7f;
+  color: black;
+}
+
+.connect-button {
+  background-color: rgb(244, 109, 33);
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.connect-button:hover {
+  background-color: #ff8c3a;
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+
+  .connect-button {
+    margin-top: 10px;
+  }
+}
