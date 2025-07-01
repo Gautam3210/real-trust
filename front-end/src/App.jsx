@@ -5,6 +5,7 @@ import Banner from "./components/Banner";
 import Client from "./components/Client";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
+import Subscriber from "./components/Subscriber";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
       <Banner/>
       <Projects/>
       <Client/>
+      <Subscriber/>
       </div>
      
     </>
