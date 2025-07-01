@@ -60,7 +60,11 @@ npm run dev
 ### 🔗 Quick Access to Admin Panel
 
 > **Note:**  
+> Backend is deployed on render so it may 30-40 sec to load the data
 > After starting the frontend, you will see an **"Admin"** button in the navigation bar.  
 > Clicking on it will take you directly to the **Admin Panel**, where you can manage projects, clients, contact form submissions, and newsletter subscribers.
+
+
+
 
 ---
