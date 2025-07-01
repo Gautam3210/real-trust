@@ -1,6 +1,7 @@
 const projectModel = require("../models/projectsModel");
 const clientModel = require("../models/clientsModel");
 const userInfoModel = require("../models/userInfoModel");
+const subscriberModel = require("../models/subscriberModel");
 
 // -----------------------post project data-------------------------------------------------
 
@@ -73,11 +74,41 @@ const getUserInfo = async (req, res) => {
     const data = await userInfoModel.find();
 
     res.status(200).json(data);
-  } catch (err) { 
+  } catch (err) {
     console.error("Failed to fetch consultations:", err);
     res.status(500).json({ error: "Server error" });
   }
 };
+
+// -----------------------post subscriber-------------------------------------------------
+const postSubscriber = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    if (!email) return res.status(400).json({ error: "Email is required" });
+
+    const newSubscriber = new subscriberModel({ email });
+    const saved = await newSubscriber.save();
+
+    res.status(201).json({success:true, message: "Subscribed successfully!" });
+  } catch (error) {
+    console.error("Subscribe error:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+// -----------------------get subscriber-------------------------------------------------
+
+const getSubscriber = async(req, res)=>{
+  try {
+    const subscribers = await subscriberModel.find().sort({ createdAt: -1 });
+    res.status(200).json(subscribers);
+  } catch (err) {
+    console.error("Error fetching subscribers:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+}
+
 
 module.exports = {
   postProjectData,
@@ -85,4 +116,6 @@ module.exports = {
   postClientData,
   getClientData,
   getUserInfo,
+  postSubscriber,
+  getSubscriber
 };
