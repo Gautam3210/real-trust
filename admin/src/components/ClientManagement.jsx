@@ -1,5 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 import "./ClientManagement.css";
+
 
 function ClientManagement() {
   const [clientName, setClientName] = useState("");
@@ -7,6 +9,8 @@ function ClientManagement() {
   const [clientDesignation, setClientDesignation] = useState("");
   const [clientImage, setClientImage] = useState(null);
   const [preview, setPreview] = useState(null);
+
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -19,29 +23,39 @@ function ClientManagement() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
     if (!clientName || !clientDescription || !clientDesignation || !clientImage) {
       alert("Please fill all fields");
       return;
     }
-
-    console.log({
-      clientName,
-      clientDescription,
-      clientDesignation,
-      clientImage,
-    });
-
-    alert("Client added successfully!");
-
-    // Reset form
-    setClientName("");
-    setClientDescription("");
-    setClientDesignation("");
-    setClientImage(null);
-    setPreview(null);
+  
+    const formData = new FormData();
+    formData.append("clientName", clientName);
+    formData.append("clientDescription", clientDescription);
+    formData.append("clientDesignation", clientDesignation);
+    formData.append("clientImage", clientImage);
+  
+    try {
+      const {data} = await axios.post(backendUrl+"/api/post-clients", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      
+      alert("Client added successfully!");
+  
+      setClientName("");
+      setClientDescription("");
+      setClientDesignation("");
+      setClientImage(null);
+      setPreview(null);
+    } catch (error) {
+      console.error("Error uploading client:", error);
+      alert("Error uploading client.");
+    }
   };
 
   return (
@@ -49,12 +63,11 @@ function ClientManagement() {
       <h2 className="client-heading">Add New Client</h2>
 
       <form onSubmit={handleSubmit} className="client-form">
-        {/* Image Upload */}
+        
         <label className="client-label">Client Image</label>
         <input type="file" accept="image/*" onChange={handleImageChange} />
         {preview && <img src={preview} alt="Preview" className="client-image-preview" />}
 
-        {/* Name */}
         <label className="client-label">Client Name</label>
         <input
           type="text"
@@ -64,7 +77,7 @@ function ClientManagement() {
           placeholder="Enter client name"
         />
 
-        {/* Description */}
+       
         <label className="client-label">Client Description</label>
         <textarea
           value={clientDescription}
@@ -73,7 +86,7 @@ function ClientManagement() {
           placeholder="Enter client description"
         />
 
-        {/* Designation */}
+    
         <label className="client-label">Client Designation</label>
         <input
           type="text"
@@ -83,7 +96,6 @@ function ClientManagement() {
           placeholder="Ex: CEO, Web Developer"
         />
 
-        {/* Submit */}
         <button type="submit" className="client-button">Add Client</button>
       </form>
     </div>

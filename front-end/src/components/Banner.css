@@ -1,0 +1,9 @@
+.white-input {
+  background: rgb(0 27 81 / 0);
+  color: white;
+}
+
+.white-input::placeholder {
+  color: white;
+  opacity: 1; /* Ensure it's not semi-transparent */
+}

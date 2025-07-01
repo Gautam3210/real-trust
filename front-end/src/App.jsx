@@ -1,7 +1,10 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Banner from "./components/Banner";
+import Client from "./components/Client";
+import Navbar from "./components/Navbar";
+import Projects from "./components/Projects";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +14,10 @@ function App() {
      
       
       <div className="card">
-      <h1>real trust</h1>
+      <Navbar/>
+      <Banner/>
+      <Projects/>
+      <Client/>
       </div>
      
     </>

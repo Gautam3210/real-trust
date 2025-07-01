@@ -1,36 +1,20 @@
 import { useEffect, useState } from "react";
-import "./ContactForm.css"; // Import CSS
+import axios from "axios";
+import "./ContactForm.css"; 
 
 function ContactForm() {
   const [contacts, setContacts] = useState([]);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
 
   useEffect(() => {
-    // Dummy data, replace with API call (e.g., fetch('/api/contacts'))
-    const dummyData = [
-      {
-        id: 1,
-        fullName: "Ravi Kumar",
-        email: "ravi@example.com",
-        mobile: "9876543210",
-        city: "Delhi",
-      },
-      {
-        id: 2,
-        fullName: "Neha Sharma",
-        email: "neha@example.com",
-        mobile: "9123456780",
-        city: "Mumbai",
-      },
-      {
-        id: 3,
-        fullName: "Amit Patel",
-        email: "amit@example.com",
-        mobile: "9012345678",
-        city: "Ahmedabad",
-      },
-    ];
-
-    setContacts(dummyData);
+    axios.get(backendUrl+"/api/get-userInfo")
+      .then((res) => {
+        console.log(res)
+        setContacts(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching contacts:", err);
+      });
   }, []);
 
   return (
@@ -40,7 +24,7 @@ function ContactForm() {
       <table className="contact-table">
         <thead>
           <tr>
-            <th>Full Name</th>
+            <th>Full Name</th> 
             <th>Email Address</th>
             <th>Mobile Number</th>
             <th>City</th>
@@ -53,11 +37,11 @@ function ContactForm() {
             </tr>
           ) : (
             contacts.map((contact) => (
-              <tr key={contact.id}>
-                <td>{contact.fullName}</td>
+              <tr key={contact._id}>
+                <td>{contact.name}</td>
                 <td>{contact.email}</td>
                 <td>{contact.mobile}</td>
-                <td>{contact.city}</td>
+                <td>{contact.address}</td>
               </tr>
             ))
           )}
