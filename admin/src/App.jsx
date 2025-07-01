@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/" element={<ProjectManagement />} />
         <Route path="/projects" element={<ProjectManagement />} />
         <Route path="/clients" element={<ClientManagement />} />
         <Route path="/contact" element={<ContactForm />} />

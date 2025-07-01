@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import "./Subscriber.css";
 
 function Subscriber() {
   const [subscribers, setSubscribers] = useState([]);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
-    // Dummy data; replace with actual API call
-    const dummySubscribers = [
-      { id: 1, email: "john@example.com" },
-      { id: 2, email: "jane@example.com" },
-      { id: 3, email: "doe@example.com" },
-    ];
-
-    setSubscribers(dummySubscribers);
+    axios
+      .get(backendUrl + "/api/get-subscribe")
+      .then((res) => {
+        setSubscribers(res.data);
+        
+      })
+      .catch((err) => {
+        console.error("Error fetching subscribers:", err);
+      });
   }, []);
 
   return (
@@ -32,7 +35,7 @@ function Subscriber() {
             </tr>
           ) : (
             subscribers.map((subscriber) => (
-              <tr key={subscriber.id}>
+              <tr key={subscriber._id}>
                 <td>{subscriber.email}</td>
               </tr>
             ))
