@@ -4,17 +4,20 @@ require("dotenv").config();
 const cors = require("cors");
 const connectDB = require("./config/mongodb");
 const frontendRoute = require("./Routes/frontendRoute");
-const cors = require("cors");
 
 connectDB();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded());
 app.use("/uploads", express.static("uploads"));
-
-app.use(cors());
 
 app.use("/api", adminRoute);
 app.use("/api", frontendRoute);
